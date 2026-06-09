@@ -11,55 +11,55 @@ export default function AboutPage() {
           </a>
 
           <nav className="hidden gap-8 text-sm md:flex">
-            <a href="/" className="hover:text-[#C6922E]">
+            <a href="/" className="hover:text-[#e4b32c]">
               Home
             </a>
 
-            <a href="/about" className="text-[#C6922E]">
+            <a href="/about" className="text-[#e4b32c]">
               About
             </a>
 
-            <a href="/add-your-business" className="hover:text-[#C6922E]">
+            <a href="/add-your-business" className="hover:text-[#e4b32c]">
               Add Your Business
             </a>
 
-            <a href="/contact" className="hover:text-[#C6922E]">
+            <a href="/contact" className="hover:text-[#e4b32c]">
               Contact
             </a>
           </nav>
 
           <a
             href="/search"
-            className="hidden rounded-full border border-white/20 px-4 py-2 text-sm font-semibold hover:border-[#C6922E] hover:text-[#C6922E] md:inline-block"
+            className="hidden rounded-full border border-white/20 px-4 py-2 text-sm font-semibold hover:border-[#e4b32c] hover:text-[#e4b32c] md:inline-block"
           >
             Search
           </a>
         </div>
         <nav className="mx-auto mt-4 flex max-w-6xl flex-wrap gap-4 text-sm md:hidden">
-  <a href="/" className="hover:text-[#C6922E]">
+  <a href="/" className="hover:text-[#e4b32c]">
     Home
   </a>
 
-  <a href="/search" className="hover:text-[#C6922E]">
+  <a href="/search" className="hover:text-[#e4b32c]">
     Search
   </a>
 
-  <a href="/about" className="hover:text-[#C6922E]">
+  <a href="/about" className="hover:text-[#e4b32c]">
     About
   </a>
 
-  <a href="/add-your-business" className="hover:text-[#C6922E]">
+  <a href="/add-your-business" className="hover:text-[#e4b32c]">
     Add Business
   </a>
 
-  <a href="/contact" className="hover:text-[#C6922E]">
+  <a href="/contact" className="hover:text-[#e4b32c]">
     Contact
   </a>
 </nav>
       </header>
 
       <section className="mx-auto max-w-4xl px-6 py-14">
-        <p className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-[#C6922E]">
+        <p className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-[#e4b32c]">
           About The Black Basket
         </p>
 
@@ -97,3 +97,4 @@ export default function AboutPage() {
     </main>
   );
 }
+

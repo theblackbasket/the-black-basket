@@ -156,7 +156,7 @@ const visibleBusinesses = (businesses || []).filter((business) => {
               defaultValue={query === "everything" ? "" : query}
             />
 
-            <button className="rounded-full bg-[#C6922E] px-5 py-2 font-semibold text-white">
+            <button className="rounded-full bg-[#e4b32c] px-5 py-2 font-semibold text-white">
               Search
             </button>
           </form>
@@ -167,23 +167,23 @@ const visibleBusinesses = (businesses || []).filter((business) => {
         </div>
 
         <nav className="mx-auto mt-4 flex max-w-6xl flex-wrap gap-4 text-sm md:hidden">
-          <a href="/" className="hover:text-[#C6922E]">
+          <a href="/" className="hover:text-[#e4b32c]">
             Home
           </a>
 
-          <a href="/search" className="text-[#C6922E]">
+          <a href="/search" className="text-[#e4b32c]">
             Search
           </a>
 
-          <a href="/about" className="hover:text-[#C6922E]">
+          <a href="/about" className="hover:text-[#e4b32c]">
             About
           </a>
 
-          <a href="/add-your-business" className="hover:text-[#C6922E]">
+          <a href="/add-your-business" className="hover:text-[#e4b32c]">
             Add Business
           </a>
 
-          <a href="/contact" className="hover:text-[#C6922E]">
+          <a href="/contact" className="hover:text-[#e4b32c]">
             Contact
           </a>
         </nav>
@@ -201,7 +201,7 @@ const visibleBusinesses = (businesses || []).filter((business) => {
             defaultValue={query === "everything" ? "" : query}
           />
 
-          <button className="rounded-full bg-[#C6922E] px-4 py-2 text-sm font-semibold text-white">
+          <button className="rounded-full bg-[#e4b32c] px-4 py-2 text-sm font-semibold text-white">
             Go
           </button>
         </form>
@@ -439,7 +439,7 @@ function BusinessCard({
               {name}
             </h2>
 
-            <span className="shrink-0 text-[#C6922E]">●</span>
+            <span className="shrink-0 text-[#e4b32c]">●</span>
           </div>
 
           <p className="mb-2 text-sm font-medium">{category}</p>
@@ -480,3 +480,4 @@ function BusinessCard({
     </article>
   );
 }
+

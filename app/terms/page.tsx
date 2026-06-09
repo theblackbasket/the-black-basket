@@ -20,7 +20,7 @@ export default function TermsPage() {
       </header>
 
       <section className="mx-auto max-w-4xl px-6 py-14">
-        <p className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-[#C6922E]">
+        <p className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-[#e4b32c]">
           Terms & Submission Guidelines
         </p>
 
@@ -113,3 +113,4 @@ export default function TermsPage() {
     </main>
   );
 }
+

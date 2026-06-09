@@ -69,7 +69,7 @@ export default function BusinessImagePreview() {
   return (
     <div className="mt-6 rounded-3xl border border-[#E7DCCB] bg-white p-5 shadow-sm">
       <div className="mb-4">
-        <p className="mb-1 text-xs font-semibold uppercase tracking-[0.18em] text-[#C6922E]">
+        <p className="mb-1 text-xs font-semibold uppercase tracking-[0.18em] text-[#e4b32c]">
           Mock profile preview
         </p>
 
@@ -140,3 +140,4 @@ export default function BusinessImagePreview() {
     </div>
   );
 }
+

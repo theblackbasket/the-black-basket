@@ -7,19 +7,19 @@ export default function Footer() {
         </p>
 
         <nav className="flex flex-wrap gap-5">
-          <a href="/about" className="hover:text-[#C6922E]">
+          <a href="/about" className="hover:text-[#e4b32c]">
             About
           </a>
 
-          <a href="/contact" className="hover:text-[#C6922E]">
+          <a href="/contact" className="hover:text-[#e4b32c]">
             Contact
           </a>
 
-          <a href="/terms" className="hover:text-[#C6922E]">
+          <a href="/terms" className="hover:text-[#e4b32c]">
             Terms
           </a>
 
-          <a href="/privacy" className="hover:text-[#C6922E]">
+          <a href="/privacy" className="hover:text-[#e4b32c]">
             Privacy
           </a>
         </nav>
@@ -27,3 +27,4 @@ export default function Footer() {
     </footer>
   );
 }
+

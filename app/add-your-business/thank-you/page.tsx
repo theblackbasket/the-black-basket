@@ -34,15 +34,15 @@ export default function ThankYouPage() {
           </div>
 
           <div className="mt-6 flex flex-wrap justify-center gap-4 text-xs text-black/50">
-            <a href="/terms" className="hover:text-[#C6922E]">
+            <a href="/terms" className="hover:text-[#e4b32c]">
               Submission Guidelines
             </a>
 
-            <a href="/privacy" className="hover:text-[#C6922E]">
+            <a href="/privacy" className="hover:text-[#e4b32c]">
               Privacy Policy
             </a>
 
-            <a href="/contact" className="hover:text-[#C6922E]">
+            <a href="/contact" className="hover:text-[#e4b32c]">
               Contact
             </a>
           </div>
@@ -53,3 +53,4 @@ export default function ThankYouPage() {
     </main>
   );
 }
+

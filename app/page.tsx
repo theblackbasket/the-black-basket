@@ -37,7 +37,7 @@ export default function Home() {
               placeholder="What are you looking for?"
             />
 
-            <button className="rounded-full bg-[#C6922E] px-6 py-3 font-semibold text-white">
+            <button className="rounded-full bg-[#e4b32c] px-6 py-3 font-semibold text-white">
               Search
             </button>
           </form>
@@ -85,3 +85,4 @@ export default function Home() {
     </main>
   );
 }
+

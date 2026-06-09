@@ -14,7 +14,7 @@ export default function AddYourBusinessPage() {
 
           <nav className="flex items-center gap-6 text-sm">
             <a href="/search">Search</a>
-            <a href="/add-your-business" className="text-[#C6922E]">
+            <a href="/add-your-business" className="text-[#e4b32c]">
               Add Your Business
             </a>
           </nav>
@@ -23,7 +23,7 @@ export default function AddYourBusinessPage() {
 
       <section className="mx-auto grid max-w-6xl gap-10 px-6 py-12 md:grid-cols-[0.9fr_1.2fr]">
         <div>
-          <p className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-[#C6922E]">
+          <p className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-[#e4b32c]">
             Get listed
           </p>
 
@@ -94,7 +94,7 @@ export default function AddYourBusinessPage() {
       name="logo_image"
       type="file"
       accept="image/*"
-      className="rounded-2xl border border-[#E7DCCB] bg-white px-4 py-3 text-sm outline-none focus:border-[#C6922E]"
+      className="rounded-2xl border border-[#E7DCCB] bg-white px-4 py-3 text-sm outline-none focus:border-[#e4b32c]"
     />
 
     <span className="text-xs text-black/50">
@@ -111,7 +111,7 @@ export default function AddYourBusinessPage() {
       name="cover_image"
       type="file"
       accept="image/*"
-      className="rounded-2xl border border-[#E7DCCB] bg-white px-4 py-3 text-sm outline-none focus:border-[#C6922E]"
+      className="rounded-2xl border border-[#E7DCCB] bg-white px-4 py-3 text-sm outline-none focus:border-[#e4b32c]"
     />
 
     <span className="text-xs text-black/50">
@@ -125,7 +125,7 @@ export default function AddYourBusinessPage() {
               <input
                 name="business_name"
                 required
-                className="rounded-2xl border border-[#E7DCCB] px-4 py-3 outline-none focus:border-[#C6922E]"
+                className="rounded-2xl border border-[#E7DCCB] px-4 py-3 outline-none focus:border-[#e4b32c]"
                 placeholder="Example: Golden Wick Studio"
               />
             </label>
@@ -135,7 +135,7 @@ export default function AddYourBusinessPage() {
               <input
                 name="owner_name"
                 required
-                className="rounded-2xl border border-[#E7DCCB] px-4 py-3 outline-none focus:border-[#C6922E]"
+                className="rounded-2xl border border-[#E7DCCB] px-4 py-3 outline-none focus:border-[#e4b32c]"
                 placeholder="Owner or submitter name"
               />
               <span className="text-xs text-black/50">
@@ -150,7 +150,7 @@ export default function AddYourBusinessPage() {
                 name="owner_email"
                 type="email"
                 required
-                className="rounded-2xl border border-[#E7DCCB] px-4 py-3 outline-none focus:border-[#C6922E]"
+                className="rounded-2xl border border-[#E7DCCB] px-4 py-3 outline-none focus:border-[#e4b32c]"
                 placeholder="you@example.com"
               />
               <span className="text-xs text-black/50">
@@ -166,7 +166,7 @@ export default function AddYourBusinessPage() {
               <input
                 name="website"
                 type="url"
-                className="rounded-2xl border border-[#E7DCCB] px-4 py-3 outline-none focus:border-[#C6922E]"
+                className="rounded-2xl border border-[#E7DCCB] px-4 py-3 outline-none focus:border-[#e4b32c]"
                 placeholder="https://yourbusiness.com"
               />
             </label>
@@ -178,7 +178,7 @@ export default function AddYourBusinessPage() {
               </span>
               <input
                 name="instagram"
-                className="rounded-2xl border border-[#E7DCCB] px-4 py-3 outline-none focus:border-[#C6922E]"
+                className="rounded-2xl border border-[#E7DCCB] px-4 py-3 outline-none focus:border-[#e4b32c]"
                 placeholder="@yourbusiness on Instagram, TikTok, Facebook, etc."
               />
             </label>
@@ -188,7 +188,7 @@ export default function AddYourBusinessPage() {
               <select
                 name="category"
                 required
-                className="rounded-2xl border border-[#E7DCCB] bg-white px-4 py-3 outline-none focus:border-[#C6922E]"
+                className="rounded-2xl border border-[#E7DCCB] bg-white px-4 py-3 outline-none focus:border-[#e4b32c]"
               >
                 <option value="">Select a category</option>
                 <option>Skincare</option>
@@ -211,7 +211,7 @@ export default function AddYourBusinessPage() {
               </span>
               <input
                 name="location"
-                className="rounded-2xl border border-[#E7DCCB] px-4 py-3 outline-none focus:border-[#C6922E]"
+                className="rounded-2xl border border-[#E7DCCB] px-4 py-3 outline-none focus:border-[#e4b32c]"
                 placeholder="City, State / Service area / Online"
               />
               <span className="text-xs text-black/50">
@@ -225,7 +225,7 @@ export default function AddYourBusinessPage() {
               <textarea
                 name="description"
                 required
-                className="min-h-32 rounded-2xl border border-[#E7DCCB] px-4 py-3 outline-none focus:border-[#C6922E]"
+                className="min-h-32 rounded-2xl border border-[#E7DCCB] px-4 py-3 outline-none focus:border-[#e4b32c]"
                 placeholder="Tell shoppers what this business sells, offers, or is known for..."
               />
               <span className="text-xs text-black/50">
@@ -240,7 +240,7 @@ export default function AddYourBusinessPage() {
               <input
                 name="tags"
                 required
-                className="rounded-2xl border border-[#E7DCCB] px-4 py-3 outline-none focus:border-[#C6922E]"
+                className="rounded-2xl border border-[#E7DCCB] px-4 py-3 outline-none focus:border-[#e4b32c]"
                 placeholder="candles, skincare, braids, cakes, jewelry"
               />
               <span className="text-xs text-black/50">
@@ -362,7 +362,7 @@ export default function AddYourBusinessPage() {
 
                 <textarea
                   name="verification_notes"
-                  className="min-h-24 rounded-2xl border border-[#E7DCCB] px-4 py-3 outline-none focus:border-[#C6922E]"
+                  className="min-h-24 rounded-2xl border border-[#E7DCCB] px-4 py-3 outline-none focus:border-[#e4b32c]"
                   placeholder="Example: The founder is listed on the About page, the owner posts on the business Instagram, etc."
                 />
               </label>
@@ -376,7 +376,7 @@ export default function AddYourBusinessPage() {
                 <input
                   name="verification_link"
                   type="url"
-                  className="rounded-2xl border border-[#E7DCCB] px-4 py-3 outline-none focus:border-[#C6922E]"
+                  className="rounded-2xl border border-[#E7DCCB] px-4 py-3 outline-none focus:border-[#e4b32c]"
                   placeholder="https://..."
                 />
 
@@ -392,7 +392,7 @@ export default function AddYourBusinessPage() {
                 <input name="submission_agreement" type="checkbox" required />
                 <span className="text-sm leading-6">
                   By submitting this business, I agree to The Black Basket’s{" "}
-                  <a href="/terms" className="font-semibold text-[#C6922E]">
+                  <a href="/terms" className="font-semibold text-[#e4b32c]">
                     Terms and Submission Guidelines
                   </a>
                   . I understand that submitting a business does not guarantee
@@ -410,15 +410,15 @@ export default function AddYourBusinessPage() {
             </button>
 
             <div className="mt-6 flex flex-wrap justify-center gap-4 text-xs text-black/50">
-              <a href="/privacy" className="hover:text-[#C6922E]">
+              <a href="/privacy" className="hover:text-[#e4b32c]">
                 Privacy Policy
               </a>
 
-              <a href="/terms" className="hover:text-[#C6922E]">
+              <a href="/terms" className="hover:text-[#e4b32c]">
                 Submission Guidelines
               </a>
 
-              <a href="/contact" className="hover:text-[#C6922E]">
+              <a href="/contact" className="hover:text-[#e4b32c]">
                 Contact
               </a>
             </div>
@@ -430,3 +430,4 @@ export default function AddYourBusinessPage() {
     </main>
   );
 }
+
