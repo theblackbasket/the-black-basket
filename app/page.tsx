@@ -1,4 +1,5 @@
 import Logo from "@/components/Logo";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
@@ -9,12 +10,27 @@ export default function Home() {
             <Logo />
           </a>
 
-<nav className="hidden gap-8 text-sm md:flex">
-  <a href="/">Home</a>
-  <a href="/about">About</a>
-  <a href="/add-your-business">Add Your Business</a>
-  <a href="/contact">Contact</a>
-</nav>
+          <nav className="hidden gap-8 text-sm md:flex">
+            <a href="/" className="hover:text-[#e4b32c]">
+              Home
+            </a>
+
+            <a href="/about" className="hover:text-[#e4b32c]">
+              About
+            </a>
+
+            <a href="/blog" className="hover:text-[#e4b32c]">
+              Blog
+            </a>
+
+            <a href="/add-your-business" className="hover:text-[#e4b32c]">
+              Add Your Business
+            </a>
+
+            <a href="/contact" className="hover:text-[#e4b32c]">
+              Contact
+            </a>
+          </nav>
         </header>
 
         <div className="max-w-2xl">
@@ -33,7 +49,7 @@ export default function Home() {
           >
             <input
               name="q"
-              className="flex-1 px-5 text-black outline-none"
+              className="min-w-0 flex-1 px-5 text-black outline-none"
               placeholder="What are you looking for?"
             />
 
@@ -74,15 +90,16 @@ export default function Home() {
             </a>
 
             <a
-              href="/search?q=baby products"
+              href="/search?q=restaurants"
               className="rounded-full border border-white/30 px-4 py-2"
             >
-              baby products
+              restaurants
             </a>
           </div>
         </div>
       </section>
+
+      <Footer />
     </main>
   );
 }
-

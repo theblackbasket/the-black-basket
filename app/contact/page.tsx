@@ -19,6 +19,10 @@ export default function ContactPage() {
               About
             </a>
 
+            <a href="/blog" className="hover:text-[#e4b32c]">
+              Blog
+            </a>
+
             <a href="/add-your-business" className="hover:text-[#e4b32c]">
               Add Your Business
             </a>
@@ -35,6 +39,32 @@ export default function ContactPage() {
             Search
           </a>
         </div>
+
+        <nav className="mx-auto mt-4 flex max-w-6xl flex-wrap gap-4 text-sm md:hidden">
+          <a href="/" className="hover:text-[#e4b32c]">
+            Home
+          </a>
+
+          <a href="/search" className="hover:text-[#e4b32c]">
+            Search
+          </a>
+
+          <a href="/about" className="hover:text-[#e4b32c]">
+            About
+          </a>
+
+          <a href="/blog" className="hover:text-[#e4b32c]">
+            Blog
+          </a>
+
+          <a href="/add-your-business" className="hover:text-[#e4b32c]">
+            Add Business
+          </a>
+
+          <a href="/contact" className="text-[#e4b32c]">
+            Contact
+          </a>
+        </nav>
       </header>
 
       <section className="mx-auto max-w-4xl px-6 py-14">
@@ -62,14 +92,14 @@ export default function ContactPage() {
 
           <a
             href="mailto:theblackbasket619@gmail.com"
-            className="text-lg font-semibold text-[#e4b32c]"
+            className="break-words text-lg font-semibold text-[#e4b32c]"
           >
             theblackbasket619@gmail.com
           </a>
 
           <p className="mt-6 text-sm text-black/50">
             Please include the business name if you are requesting a listing
-            update or removal.
+            update, claim, or removal.
           </p>
         </div>
       </section>
@@ -78,4 +108,3 @@ export default function ContactPage() {
     </main>
   );
 }
-
