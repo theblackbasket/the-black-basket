@@ -19,6 +19,10 @@ export default function AboutPage() {
               About
             </a>
 
+            <a href="/blog" className="hover:text-[#e4b32c]">
+              Blog
+            </a>
+
             <a href="/add-your-business" className="hover:text-[#e4b32c]">
               Add Your Business
             </a>
@@ -35,27 +39,32 @@ export default function AboutPage() {
             Search
           </a>
         </div>
+
         <nav className="mx-auto mt-4 flex max-w-6xl flex-wrap gap-4 text-sm md:hidden">
-  <a href="/" className="hover:text-[#e4b32c]">
-    Home
-  </a>
+          <a href="/" className="hover:text-[#e4b32c]">
+            Home
+          </a>
 
-  <a href="/search" className="hover:text-[#e4b32c]">
-    Search
-  </a>
+          <a href="/search" className="hover:text-[#e4b32c]">
+            Search
+          </a>
 
-  <a href="/about" className="hover:text-[#e4b32c]">
-    About
-  </a>
+          <a href="/about" className="text-[#e4b32c]">
+            About
+          </a>
 
-  <a href="/add-your-business" className="hover:text-[#e4b32c]">
-    Add Business
-  </a>
+          <a href="/blog" className="hover:text-[#e4b32c]">
+            Blog
+          </a>
 
-  <a href="/contact" className="hover:text-[#e4b32c]">
-    Contact
-  </a>
-</nav>
+          <a href="/add-your-business" className="hover:text-[#e4b32c]">
+            Add Business
+          </a>
+
+          <a href="/contact" className="hover:text-[#e4b32c]">
+            Contact
+          </a>
+        </nav>
       </header>
 
       <section className="mx-auto max-w-4xl px-6 py-14">
@@ -76,8 +85,9 @@ export default function AboutPage() {
 
           <p>
             Instead of only searching by business name, shoppers can search by
-            keywords for things like home goods, skincare, jewelry, bakeries,
-            candles, hair care, baby products, clothing, and so much more.
+            keywords for things like home goods, skincare, jewelry, restaurants,
+            bakeries, candles, hair care, baby products, clothing, and so much
+            more.
           </p>
 
           <p>
@@ -97,4 +107,3 @@ export default function AboutPage() {
     </main>
   );
 }
-
