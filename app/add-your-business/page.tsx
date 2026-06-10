@@ -3,7 +3,13 @@ import Footer from "@/components/Footer";
 import { submitBusiness } from "./actions";
 import BusinessImagePreview from "@/components/BusinessImagePreview";
 
-export default function AddYourBusinessPage() {
+export default async function AddYourBusinessPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ error?: string }>;
+}) {
+  const params = await searchParams;
+  const errorMessage = params.error;
   return (
     <main className="min-h-screen bg-[#FFFDF8] text-[#0B0B0A]">
       <header className="border-b border-[#E7DCCB] bg-[#0B0B0A] px-6 py-5 text-white">
@@ -82,11 +88,18 @@ export default function AddYourBusinessPage() {
           <BusinessImagePreview />
         </div>
 
-        <form
-          action={submitBusiness}
-          encType="multipart/form-data"
-          className="rounded-[2rem] border border-[#E7DCCB] bg-white p-6 shadow-sm"
-        >
+               <div className="grid gap-5">
+          {errorMessage && (
+            <div className="rounded-3xl border border-red-200 bg-red-50 p-5 text-sm font-semibold text-red-700">
+              {errorMessage}
+            </div>
+          )}
+
+          <form
+            action={submitBusiness}
+            encType="multipart/form-data"
+            className="rounded-[2rem] border border-[#E7DCCB] bg-white p-6 shadow-sm"
+          >
           <div className="mb-6">
             <h2 className="text-3xl font-bold">Business details</h2>
 
@@ -464,7 +477,8 @@ export default function AddYourBusinessPage() {
               </a>
             </div>
           </div>
-        </form>
+             </form>
+        </div>
       </section>
 
       <Footer />
