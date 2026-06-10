@@ -72,47 +72,47 @@ export default async function SearchPage({
     );
   }
 
- function getSearchVariations(term: string) {
-  const cleaned = term.toLowerCase().trim();
+  function getSearchVariations(term: string) {
+    const cleaned = term.toLowerCase().trim();
 
-  const variations = new Set<string>();
-  variations.add(cleaned);
+    const variations = new Set<string>();
+    variations.add(cleaned);
 
-  if (cleaned.endsWith("s")) {
-    variations.add(cleaned.slice(0, -1));
-  } else {
-    variations.add(`${cleaned}s`);
+    if (cleaned.endsWith("s")) {
+      variations.add(cleaned.slice(0, -1));
+    } else {
+      variations.add(`${cleaned}s`);
+    }
+
+    if (cleaned.endsWith("ies")) {
+      variations.add(`${cleaned.slice(0, -3)}y`);
+    } else if (cleaned.endsWith("y")) {
+      variations.add(`${cleaned.slice(0, -1)}ies`);
+    }
+
+    return Array.from(variations).filter(Boolean);
   }
 
-  if (cleaned.endsWith("ies")) {
-    variations.add(`${cleaned.slice(0, -3)}y`);
-  } else if (cleaned.endsWith("y")) {
-    variations.add(`${cleaned.slice(0, -1)}ies`);
-  }
+  const searchTerms = getSearchVariations(query);
 
-  return Array.from(variations).filter(Boolean);
-}
+  const visibleBusinesses = (businesses || []).filter((business) => {
+    if (query === "everything") {
+      return true;
+    }
 
-const searchTerms = getSearchVariations(query);
+    const searchableText = [
+      business.business_name,
+      business.category,
+      business.description,
+      business.location,
+      ...(business.tags || []),
+    ]
+      .filter(Boolean)
+      .join(" ")
+      .toLowerCase();
 
-const visibleBusinesses = (businesses || []).filter((business) => {
-  if (query === "everything") {
-    return true;
-  }
-
-  const searchableText = [
-    business.business_name,
-    business.category,
-    business.description,
-    business.location,
-    ...(business.tags || []),
-  ]
-    .filter(Boolean)
-    .join(" ")
-    .toLowerCase();
-
-  return searchTerms.some((term) => searchableText.includes(term));
-});
+    return searchTerms.some((term) => searchableText.includes(term));
+  });
 
   function makeFilterLink(key: keyof SearchParams) {
     const urlParams = new URLSearchParams();
@@ -161,9 +161,23 @@ const visibleBusinesses = (businesses || []).filter((business) => {
             </button>
           </form>
 
-          <a href="/add-your-business" className="shrink-0 text-sm">
-            Add Business
-          </a>
+          <nav className="hidden items-center gap-5 text-sm lg:flex">
+            <a href="/" className="hover:text-[#e4b32c]">
+              Home
+            </a>
+
+            <a href="/about" className="hover:text-[#e4b32c]">
+              About
+            </a>
+
+            <a href="/blog" className="hover:text-[#e4b32c]">
+              Blog
+            </a>
+
+            <a href="/add-your-business" className="hover:text-[#e4b32c]">
+              Add Business
+            </a>
+          </nav>
         </div>
 
         <nav className="mx-auto mt-4 flex max-w-6xl flex-wrap gap-4 text-sm md:hidden">
@@ -177,6 +191,10 @@ const visibleBusinesses = (businesses || []).filter((business) => {
 
           <a href="/about" className="hover:text-[#e4b32c]">
             About
+          </a>
+
+          <a href="/blog" className="hover:text-[#e4b32c]">
+            Blog
           </a>
 
           <a href="/add-your-business" className="hover:text-[#e4b32c]">
@@ -480,4 +498,3 @@ function BusinessCard({
     </article>
   );
 }
-
