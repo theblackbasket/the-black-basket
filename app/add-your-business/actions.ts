@@ -17,6 +17,104 @@ function getFileExtension(file: File) {
   return nameParts.length > 1 ? nameParts.pop() : "png";
 }
 
+async function geocodeServiceArea(serviceArea: string) {
+  const token = process.env.MAPBOX_ACCESS_TOKEN;
+
+  if (!token) {
+    throw new Error("Missing MAPBOX_ACCESS_TOKEN.");
+  }
+
+  const cleanedServiceArea = serviceArea.toLowerCase().trim();
+
+  const url = new URL(
+    `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(
+      serviceArea
+    )}.json`
+  );
+
+  url.searchParams.set("access_token", token);
+  url.searchParams.set("country", "us");
+  url.searchParams.set("limit", "1");
+  url.searchParams.set("types", "place,postcode,locality,address");
+  url.searchParams.set("autocomplete", "false");
+  url.searchParams.set("fuzzyMatch", "false");
+
+  const response = await fetch(url.toString());
+
+  if (!response.ok) {
+    throw new Error("Could not check this service area. Please try again.");
+  }
+
+  const data = await response.json();
+  const result = data.features?.[0];
+
+  if (!result || !Array.isArray(result.center)) {
+    throw new Error(
+      "We could not find that service area. Please enter a real city, state, or ZIP code."
+    );
+  }
+
+  const relevance = typeof result.relevance === "number" ? result.relevance : 0;
+  const placeType = Array.isArray(result.place_type) ? result.place_type : [];
+  const placeName = String(result.place_name || "").toLowerCase();
+  const resultText = String(result.text || "").toLowerCase();
+
+  const acceptableTypes = ["place", "postcode", "locality", "address"];
+
+  const hasAcceptableType = placeType.some((type: string) =>
+    acceptableTypes.includes(type)
+  );
+
+  const contextText = Array.isArray(result.context)
+    ? result.context
+        .map((item: { text?: string; short_code?: string }) =>
+          `${item.text || ""} ${item.short_code || ""}`.toLowerCase()
+        )
+        .join(" ")
+    : "";
+
+  const isInUnitedStates =
+    placeName.includes("united states") ||
+    contextText.includes("united states") ||
+    contextText.includes("us");
+
+  const typedWords = cleanedServiceArea
+    .split(/[\s,]+/)
+    .map((word) => word.trim())
+    .filter((word) => word.length >= 2);
+
+  const matchedTypedWords = typedWords.filter(
+    (word) =>
+      placeName.includes(word) ||
+      resultText.includes(word) ||
+      contextText.includes(word)
+  );
+
+  const enoughTypedWordsMatched =
+    typedWords.length <= 1
+      ? matchedTypedWords.length === typedWords.length
+      : matchedTypedWords.length >= Math.ceil(typedWords.length / 2);
+
+  if (
+    relevance < 0.85 ||
+    !hasAcceptableType ||
+    !isInUnitedStates ||
+    !enoughTypedWordsMatched
+  ) {
+    throw new Error(
+      "We could not confidently verify that service area. Please enter a real city/state or ZIP code, like “Fairfield, CA” or “94533”."
+    );
+  }
+
+  const [longitude, latitude] = result.center;
+
+  return {
+    latitude,
+    longitude,
+    geocodedAddress: result.place_name || serviceArea,
+  };
+}
+
 async function uploadBusinessImage({
   file,
   slug,
@@ -85,8 +183,7 @@ export async function submitBusiness(formData: FormData) {
   const blackOwnedConfirmation =
     formData.get("black_owned_confirmation") === "on";
 
-  const submissionAgreement =
-    formData.get("submission_agreement") === "on";
+  const submissionAgreement = formData.get("submission_agreement") === "on";
 
   const womenOwned = formData.get("women_owned") === "on";
   const familyOwned = formData.get("family_owned") === "on";
@@ -122,13 +219,8 @@ export async function submitBusiness(formData: FormData) {
 
   if (physicalStore && !location) {
     throw new Error(
-      "Please add a service area for in-person businesses, such as city, state, or ZIP code."
+      "Please add a real service area for in-person businesses, such as city, state, or ZIP code."
     );
-  }
-
-  if (!location && online) {
-    // Online-only businesses can be submitted without a city/state.
-    // We save Online so search/profile pages have something clean to show.
   }
 
   if (!blackOwnedConfirmation) {
@@ -141,6 +233,20 @@ export async function submitBusiness(formData: FormData) {
     throw new Error(
       "You must agree to the Submission Guidelines before submitting."
     );
+  }
+
+  let latitude = null;
+  let longitude = null;
+  let geocodedAddress = "";
+  let geocodingStatus = "not_needed";
+
+  if (physicalStore) {
+    const geocoded = await geocodeServiceArea(location);
+
+    latitude = geocoded.latitude;
+    longitude = geocoded.longitude;
+    geocodedAddress = geocoded.geocodedAddress;
+    geocodingStatus = "geocoded";
   }
 
   const logoUrl = await uploadBusinessImage({
@@ -163,7 +269,14 @@ export async function submitBusiness(formData: FormData) {
     website,
     instagram,
     category,
+
     location: location || "Online",
+    service_area: location || "Online",
+    latitude,
+    longitude,
+    geocoded_address: geocodedAddress,
+    geocoding_status: geocodingStatus,
+
     description,
     tags,
 
