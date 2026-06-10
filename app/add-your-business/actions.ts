@@ -17,6 +17,10 @@ function getFileExtension(file: File) {
   return nameParts.length > 1 ? nameParts.pop() : "png";
 }
 
+function returnToFormWithError(message: string) {
+  redirect(`/add-your-business?error=${encodeURIComponent(message)}`);
+}
+
 async function geocodeServiceArea(serviceArea: string) {
   const token = process.env.MAPBOX_ACCESS_TOKEN;
 
@@ -102,7 +106,7 @@ async function geocodeServiceArea(serviceArea: string) {
     !enoughTypedWordsMatched
   ) {
     throw new Error(
-      "We could not confidently verify that service area. Please enter a real city/state or ZIP code, like “Fairfield, CA” or “94533”."
+      "We could not confidently verify that service area. Please enter a real city/state or ZIP code, like Fairfield, CA or 94533."
     );
   }
 
@@ -206,31 +210,31 @@ export async function submitBusiness(formData: FormData) {
   const slug = `${baseSlug}-${Date.now()}`;
 
   if (!businessName || !ownerName || !ownerEmail || !category || !description) {
-    throw new Error(
+    returnToFormWithError(
       "Business name, owner name, owner email, category, and description are required."
     );
   }
 
   if (!online && !physicalStore) {
-    throw new Error(
+    returnToFormWithError(
       "Please select whether this business is online, in-person, or both."
     );
   }
 
   if (physicalStore && !location) {
-    throw new Error(
+    returnToFormWithError(
       "Please add a real service area for in-person businesses, such as city, state, or ZIP code."
     );
   }
 
   if (!blackOwnedConfirmation) {
-    throw new Error(
+    returnToFormWithError(
       "You must confirm that this business is majority Black-owned."
     );
   }
 
   if (!submissionAgreement) {
-    throw new Error(
+    returnToFormWithError(
       "You must agree to the Submission Guidelines before submitting."
     );
   }
@@ -241,25 +245,40 @@ export async function submitBusiness(formData: FormData) {
   let geocodingStatus = "not_needed";
 
   if (physicalStore) {
-    const geocoded = await geocodeServiceArea(location);
+    try {
+      const geocoded = await geocodeServiceArea(location);
 
-    latitude = geocoded.latitude;
-    longitude = geocoded.longitude;
-    geocodedAddress = geocoded.geocodedAddress;
-    geocodingStatus = "geocoded";
+      latitude = geocoded.latitude;
+      longitude = geocoded.longitude;
+      geocodedAddress = geocoded.geocodedAddress;
+      geocodingStatus = "geocoded";
+    } catch {
+      returnToFormWithError(
+        "That location could not be verified. Please enter a real city/state or ZIP code, like Fairfield, CA or 94533."
+      );
+    }
   }
 
-  const logoUrl = await uploadBusinessImage({
-    file: logoFile,
-    slug,
-    type: "logo",
-  });
+  let logoUrl = "";
+  let coverImageUrl = "";
 
-  const coverImageUrl = await uploadBusinessImage({
-    file: coverFile,
-    slug,
-    type: "cover",
-  });
+  try {
+    logoUrl = await uploadBusinessImage({
+      file: logoFile,
+      slug,
+      type: "logo",
+    });
+
+    coverImageUrl = await uploadBusinessImage({
+      file: coverFile,
+      slug,
+      type: "cover",
+    });
+  } catch {
+    returnToFormWithError(
+      "There was a problem uploading your images. Please make sure they are image files under 5MB."
+    );
+  }
 
   const { error } = await supabase.from("businesses").insert({
     business_name: businessName,
@@ -303,7 +322,9 @@ export async function submitBusiness(formData: FormData) {
   });
 
   if (error) {
-    throw new Error(error.message);
+    returnToFormWithError(
+      "There was a problem saving this submission. Please try again."
+    );
   }
 
   redirect("/add-your-business/thank-you");
