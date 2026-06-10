@@ -72,6 +72,7 @@ export async function submitBusiness(formData: FormData) {
   const location = formData.get("location")?.toString().trim() || "";
   const description = formData.get("description")?.toString().trim() || "";
   const keywords = formData.get("tags")?.toString().trim() || "";
+
   const verificationNotes =
     formData.get("verification_notes")?.toString().trim() || "";
   const verificationLink =
@@ -104,8 +105,8 @@ export async function submitBusiness(formData: FormData) {
     .map((tag) => tag.trim())
     .filter(Boolean);
 
- const baseSlug = createSlug(businessName);
-const slug = `${baseSlug}-${Date.now()}`;
+  const baseSlug = createSlug(businessName);
+  const slug = `${baseSlug}-${Date.now()}`;
 
   if (!businessName || !ownerName || !ownerEmail || !category || !description) {
     throw new Error(
@@ -113,10 +114,21 @@ const slug = `${baseSlug}-${Date.now()}`;
     );
   }
 
-  if (!location && !online) {
+  if (!online && !physicalStore) {
     throw new Error(
-      "Please add a location, service area, or mark the business as having an online store."
+      "Please select whether this business is online, in-person, or both."
     );
+  }
+
+  if (physicalStore && !location) {
+    throw new Error(
+      "Please add a service area for in-person businesses, such as city, state, or ZIP code."
+    );
+  }
+
+  if (!location && online) {
+    // Online-only businesses can be submitted without a city/state.
+    // We save Online so search/profile pages have something clean to show.
   }
 
   if (!blackOwnedConfirmation) {
@@ -151,9 +163,10 @@ const slug = `${baseSlug}-${Date.now()}`;
     website,
     instagram,
     category,
-    location,
+    location: location || "Online",
     description,
     tags,
+
     online,
     physical_store: physicalStore,
     small_business: smallBusiness,

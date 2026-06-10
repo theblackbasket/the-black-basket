@@ -238,18 +238,17 @@ export default function AddYourBusinessPage() {
 
             <label className="grid gap-2">
               <span className="text-sm font-semibold">
-                Location or online *
+                Service area: city, state
               </span>
 
               <input
                 name="location"
                 className="rounded-2xl border border-[#E7DCCB] px-4 py-3 outline-none focus:border-[#e4b32c]"
-                placeholder="City, State / Service area / Online"
+                placeholder="Vacaville, California"
               />
 
               <span className="text-xs text-black/50">
-                If this business is online-only, you can enter “Online” and
-                check “online store” below.
+                Required for in-person businesses. Online-only businesses can leave this blank.
               </span>
             </label>
 
