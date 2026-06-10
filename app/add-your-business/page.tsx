@@ -7,13 +7,28 @@ export default function AddYourBusinessPage() {
   return (
     <main className="min-h-screen bg-[#FFFDF8] text-[#0B0B0A]">
       <header className="border-b border-[#E7DCCB] bg-[#0B0B0A] px-6 py-5 text-white">
-        <div className="mx-auto flex max-w-6xl items-center justify-between">
-          <a href="/" className="flex items-center gap-3">
+        <div className="mx-auto flex max-w-6xl items-center justify-between gap-6">
+          <a href="/" className="flex shrink-0 items-center gap-3">
             <Logo />
           </a>
 
-          <nav className="flex items-center gap-6 text-sm">
-            <a href="/search">Search</a>
+          <nav className="flex flex-wrap items-center justify-end gap-5 text-sm">
+            <a href="/" className="hover:text-[#e4b32c]">
+              Home
+            </a>
+
+            <a href="/search" className="hover:text-[#e4b32c]">
+              Search
+            </a>
+
+            <a href="/about" className="hover:text-[#e4b32c]">
+              About
+            </a>
+
+            <a href="/blog" className="hover:text-[#e4b32c]">
+              Blog
+            </a>
+
             <a href="/add-your-business" className="text-[#e4b32c]">
               Add Your Business
             </a>
@@ -63,6 +78,7 @@ export default function AddYourBusinessPage() {
               business.
             </p>
           </div>
+
           <BusinessImagePreview />
         </div>
 
@@ -73,55 +89,63 @@ export default function AddYourBusinessPage() {
         >
           <div className="mb-6">
             <h2 className="text-3xl font-bold">Business details</h2>
+
             <p className="text-sm text-black/60">
               Fields marked with * are required.
             </p>
           </div>
-<div className="grid gap-4 rounded-3xl bg-[#F7F0E6] p-5">
-  <div>
-    <h3 className="mb-1 text-lg font-bold">Business images</h3>
-    <p className="text-sm text-black/60">
-      Optional, but recommended. These help your listing look more complete.
-    </p>
-  </div>
 
-  <label className="grid gap-2">
-    <span className="text-sm font-semibold">
-      Logo image <span className="font-normal text-black/50">(optional)</span>
-    </span>
+          <div className="mb-6 grid gap-4 rounded-3xl bg-[#F7F0E6] p-5">
+            <div>
+              <h3 className="mb-1 text-lg font-bold">Business images</h3>
 
-    <input
-      name="logo_image"
-      type="file"
-      accept="image/*"
-      className="rounded-2xl border border-[#E7DCCB] bg-white px-4 py-3 text-sm outline-none focus:border-[#e4b32c]"
-    />
+              <p className="text-sm text-black/60">
+                Optional, but recommended. These help your listing look more
+                complete.
+              </p>
+            </div>
 
-    <span className="text-xs text-black/50">
-      Square image recommended, like 800 × 800. Max 5MB.
-    </span>
-  </label>
+            <label className="grid gap-2">
+              <span className="text-sm font-semibold">
+                Logo image{" "}
+                <span className="font-normal text-black/50">(optional)</span>
+              </span>
 
-  <label className="grid gap-2">
-    <span className="text-sm font-semibold">
-      Cover image <span className="font-normal text-black/50">(optional)</span>
-    </span>
+              <input
+                name="logo_image"
+                type="file"
+                accept="image/*"
+                className="rounded-2xl border border-[#E7DCCB] bg-white px-4 py-3 text-sm outline-none focus:border-[#e4b32c]"
+              />
 
-    <input
-      name="cover_image"
-      type="file"
-      accept="image/*"
-      className="rounded-2xl border border-[#E7DCCB] bg-white px-4 py-3 text-sm outline-none focus:border-[#e4b32c]"
-    />
+              <span className="text-xs text-black/50">
+                Square image recommended, like 800 × 800. Max 5MB.
+              </span>
+            </label>
 
-    <span className="text-xs text-black/50">
-      Wide banner image recommended, like 1600 × 600. Max 5MB.
-    </span>
-  </label>
-</div>
+            <label className="grid gap-2">
+              <span className="text-sm font-semibold">
+                Cover image{" "}
+                <span className="font-normal text-black/50">(optional)</span>
+              </span>
+
+              <input
+                name="cover_image"
+                type="file"
+                accept="image/*"
+                className="rounded-2xl border border-[#E7DCCB] bg-white px-4 py-3 text-sm outline-none focus:border-[#e4b32c]"
+              />
+
+              <span className="text-xs text-black/50">
+                Wide banner image recommended, like 1600 × 600. Max 5MB.
+              </span>
+            </label>
+          </div>
+
           <div className="grid gap-5">
             <label className="grid gap-2">
               <span className="text-sm font-semibold">Business name *</span>
+
               <input
                 name="business_name"
                 required
@@ -132,20 +156,22 @@ export default function AddYourBusinessPage() {
 
             <label className="grid gap-2">
               <span className="text-sm font-semibold">Owner name *</span>
+
               <input
                 name="owner_name"
                 required
                 className="rounded-2xl border border-[#E7DCCB] px-4 py-3 outline-none focus:border-[#e4b32c]"
                 placeholder="Owner or submitter name"
               />
+
               <span className="text-xs text-black/50">
-                This is for review only and will not be shown publicly by
-                default.
+                This may be shown publicly on the business profile after review.
               </span>
             </label>
 
             <label className="grid gap-2">
               <span className="text-sm font-semibold">Owner email *</span>
+
               <input
                 name="owner_email"
                 type="email"
@@ -153,6 +179,7 @@ export default function AddYourBusinessPage() {
                 className="rounded-2xl border border-[#E7DCCB] px-4 py-3 outline-none focus:border-[#e4b32c]"
                 placeholder="you@example.com"
               />
+
               <span className="text-xs text-black/50">
                 This is for review and contact purposes only.
               </span>
@@ -163,6 +190,7 @@ export default function AddYourBusinessPage() {
                 Website{" "}
                 <span className="font-normal text-black/50">(optional)</span>
               </span>
+
               <input
                 name="website"
                 type="url"
@@ -176,6 +204,7 @@ export default function AddYourBusinessPage() {
                 Social media handles{" "}
                 <span className="font-normal text-black/50">(optional)</span>
               </span>
+
               <input
                 name="instagram"
                 className="rounded-2xl border border-[#E7DCCB] px-4 py-3 outline-none focus:border-[#e4b32c]"
@@ -185,6 +214,7 @@ export default function AddYourBusinessPage() {
 
             <label className="grid gap-2">
               <span className="text-sm font-semibold">Category *</span>
+
               <select
                 name="category"
                 required
@@ -197,6 +227,7 @@ export default function AddYourBusinessPage() {
                 <option>Home Goods</option>
                 <option>Kids</option>
                 <option>Food</option>
+                <option>Restaurants</option>
                 <option>Fashion</option>
                 <option>Services</option>
                 <option>Wellness</option>
@@ -209,11 +240,13 @@ export default function AddYourBusinessPage() {
               <span className="text-sm font-semibold">
                 Location or online *
               </span>
+
               <input
                 name="location"
                 className="rounded-2xl border border-[#E7DCCB] px-4 py-3 outline-none focus:border-[#e4b32c]"
                 placeholder="City, State / Service area / Online"
               />
+
               <span className="text-xs text-black/50">
                 If this business is online-only, you can enter “Online” and
                 check “online store” below.
@@ -222,37 +255,39 @@ export default function AddYourBusinessPage() {
 
             <label className="grid gap-2">
               <span className="text-sm font-semibold">Description *</span>
+
               <textarea
                 name="description"
                 required
                 className="min-h-32 rounded-2xl border border-[#E7DCCB] px-4 py-3 outline-none focus:border-[#e4b32c]"
                 placeholder="Tell shoppers what this business sells, offers, or is known for..."
               />
+
               <span className="text-xs text-black/50">
                 This may appear publicly on the business profile.
               </span>
             </label>
 
             <label className="grid gap-2">
-              <span className="text-sm font-semibold">
-                Product keywords *
-              </span>
+              <span className="text-sm font-semibold">Business tags *</span>
+
               <input
                 name="tags"
                 required
                 className="rounded-2xl border border-[#E7DCCB] px-4 py-3 outline-none focus:border-[#e4b32c]"
                 placeholder="candles, skincare, braids, cakes, jewelry"
               />
+
               <span className="text-xs text-black/50">
-                Separate keywords with commas. These help shoppers find the
-                business in search.
+                Separate tags with commas. These help shoppers find the business
+                in search.
               </span>
             </label>
 
-            
             <div className="grid gap-3 rounded-3xl bg-[#F7F0E6] p-5">
               <div>
                 <h3 className="mb-1 text-lg font-bold">Business background</h3>
+
                 <p className="text-sm text-black/60">
                   These help shoppers understand how the business operates.
                 </p>
@@ -260,6 +295,7 @@ export default function AddYourBusinessPage() {
 
               <label className="flex gap-3">
                 <input name="online" type="checkbox" />
+
                 <span className="text-sm">
                   This business has an online store
                 </span>
@@ -267,6 +303,7 @@ export default function AddYourBusinessPage() {
 
               <label className="flex gap-3">
                 <input name="physical_store" type="checkbox" />
+
                 <span className="text-sm">
                   This business has a storefront or public location customers can
                   visit
@@ -275,6 +312,7 @@ export default function AddYourBusinessPage() {
 
               <label className="flex gap-3">
                 <input name="small_business" type="checkbox" />
+
                 <span className="text-sm">This is a small business</span>
               </label>
 
@@ -284,6 +322,7 @@ export default function AddYourBusinessPage() {
                   type="checkbox"
                   required
                 />
+
                 <span className="text-sm">
                   I confirm this business is majority Black-owned, meaning Black
                   ownership makes up 51% or more of the business *
@@ -294,6 +333,7 @@ export default function AddYourBusinessPage() {
             <div className="grid gap-3 rounded-3xl bg-[#F7F0E6] p-5">
               <div>
                 <h3 className="mb-1 text-lg font-bold">Business values</h3>
+
                 <p className="text-sm text-black/60">
                   Select every value that applies. These are optional and
                   self-reported.
@@ -348,6 +388,7 @@ export default function AddYourBusinessPage() {
                 <h3 className="mb-1 text-lg font-bold">
                   How can we verify this business is Black-owned?
                 </h3>
+
                 <p className="text-sm text-black/60">
                   Share anything that helps us review the submission. This is for
                   review only and may not appear publicly.
@@ -390,6 +431,7 @@ export default function AddYourBusinessPage() {
             <div className="rounded-3xl bg-[#F7F0E6] p-5">
               <label className="flex gap-3">
                 <input name="submission_agreement" type="checkbox" required />
+
                 <span className="text-sm leading-6">
                   By submitting this business, I agree to The Black Basket’s{" "}
                   <a href="/terms" className="font-semibold text-[#e4b32c]">
@@ -430,4 +472,3 @@ export default function AddYourBusinessPage() {
     </main>
   );
 }
-
