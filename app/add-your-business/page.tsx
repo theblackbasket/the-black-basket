@@ -2,6 +2,7 @@ import Logo from "@/components/Logo";
 import Footer from "@/components/Footer";
 import { submitBusiness } from "./actions";
 import BusinessImagePreview from "@/components/BusinessImagePreview";
+import BusinessLocationFields from "@/components/BusinessLocationFields";
 
 export default async function AddYourBusinessPage({
   searchParams,
@@ -249,21 +250,7 @@ export default async function AddYourBusinessPage({
               </select>
             </label>
 
-            <label className="grid gap-2">
-              <span className="text-sm font-semibold">
-                Service area: city, state
-              </span>
-
-              <input
-                name="location"
-                className="rounded-2xl border border-[#E7DCCB] px-4 py-3 outline-none focus:border-[#e4b32c]"
-                placeholder="Vacaville, California"
-              />
-
-              <span className="text-xs text-black/50">
-                Required for in-person businesses. Online-only businesses can leave this blank.
-              </span>
-            </label>
+          <BusinessLocationFields />
 
             <label className="grid gap-2">
               <span className="text-sm font-semibold">Description *</span>
@@ -304,23 +291,6 @@ export default async function AddYourBusinessPage({
                   These help shoppers understand how the business operates.
                 </p>
               </div>
-
-              <label className="flex gap-3">
-                <input name="online" type="checkbox" />
-
-                <span className="text-sm">
-                  This business has an online store
-                </span>
-              </label>
-
-              <label className="flex gap-3">
-                <input name="physical_store" type="checkbox" />
-
-                <span className="text-sm">
-                  This business has a storefront or public location customers can
-                  visit
-                </span>
-              </label>
 
               <label className="flex gap-3">
                 <input name="small_business" type="checkbox" />

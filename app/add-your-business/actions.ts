@@ -180,9 +180,12 @@ export async function submitBusiness(formData: FormData) {
   const verificationLink =
     formData.get("verification_link")?.toString().trim() || "";
 
-  const online = formData.get("online") === "on";
-  const physicalStore = formData.get("physical_store") === "on";
-  const smallBusiness = formData.get("small_business") === "on";
+const shoppingType = formData.get("shopping_type")?.toString() || "";
+
+const online = shoppingType === "online" || shoppingType === "both";
+const physicalStore = shoppingType === "in_person" || shoppingType === "both";
+
+const smallBusiness = formData.get("small_business") === "on";
 
   const blackOwnedConfirmation =
     formData.get("black_owned_confirmation") === "on";
@@ -215,11 +218,11 @@ export async function submitBusiness(formData: FormData) {
     );
   }
 
-  if (!online && !physicalStore) {
-    returnToFormWithError(
-      "Please select whether this business is online, in-person, or both."
-    );
-  }
+ if (!shoppingType) {
+  returnToFormWithError(
+    "Please select whether this business is online only, in person only, or both."
+  );
+}
 
   if (physicalStore && !location) {
     returnToFormWithError(
