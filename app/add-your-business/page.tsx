@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import { submitBusiness } from "./actions";
 import BusinessImagePreview from "@/components/BusinessImagePreview";
 import BusinessLocationFields from "@/components/BusinessLocationFields";
+import BusinessImageFields from "@/components/BusinessImageFields"; 
 
 export default async function AddYourBusinessPage({
   searchParams,
@@ -109,52 +110,7 @@ export default async function AddYourBusinessPage({
             </p>
           </div>
 
-          <div className="mb-6 grid gap-4 rounded-3xl bg-[#F7F0E6] p-5">
-            <div>
-              <h3 className="mb-1 text-lg font-bold">Business images</h3>
-
-              <p className="text-sm text-black/60">
-                Optional, but recommended. These help your listing look more
-                complete.
-              </p>
-            </div>
-
-            <label className="grid gap-2">
-              <span className="text-sm font-semibold">
-                Logo image{" "}
-                <span className="font-normal text-black/50">(optional)</span>
-              </span>
-
-              <input
-                name="logo_image"
-                type="file"
-                accept="image/*"
-                className="rounded-2xl border border-[#E7DCCB] bg-white px-4 py-3 text-sm outline-none focus:border-[#e4b32c]"
-              />
-
-              <span className="text-xs text-black/50">
-                Square image recommended, like 800 × 800. Max 5MB.
-              </span>
-            </label>
-
-            <label className="grid gap-2">
-              <span className="text-sm font-semibold">
-                Cover image{" "}
-                <span className="font-normal text-black/50">(optional)</span>
-              </span>
-
-              <input
-                name="cover_image"
-                type="file"
-                accept="image/*"
-                className="rounded-2xl border border-[#E7DCCB] bg-white px-4 py-3 text-sm outline-none focus:border-[#e4b32c]"
-              />
-
-              <span className="text-xs text-black/50">
-                Wide banner image recommended, like 1600 × 600. Max 5MB.
-              </span>
-            </label>
-          </div>
+          <BusinessImageFields />
 
           <div className="grid gap-5">
             <label className="grid gap-2">
